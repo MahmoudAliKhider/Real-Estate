@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import User from "../models/use.model.js"
 
-export const signup = async (req, res) => {
+export const signup = async (req, res,next) => {
     const password = await bcrypt.hash(req.body.password, 10);
     const { username, email } = req.body;
 
@@ -11,11 +11,11 @@ export const signup = async (req, res) => {
         res.status(201).send(user);
 
     } catch (error) {
-        res.status(500).json(error.messsage)
+        next(error)
     }
 }
 
-export const login = async (req, res) => {
+export const login = async (req, res,next) => {
     const user = await User.findOne({ email: req.body.email })
     try {
         if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
@@ -24,7 +24,7 @@ export const login = async (req, res) => {
         delete user.password;
         res.status(200).json({ data: user });
     } catch (error) {
-        res.status(500).json(error.messsage)
+        next(error)
 
     }
 
