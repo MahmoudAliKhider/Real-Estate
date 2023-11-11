@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import User from "../models/use.model.js"
 
-export const signup = async (req, res,next) => {
+export const signup = async (req, res, next) => {
     const password = await bcrypt.hash(req.body.password, 10);
     const { username, email } = req.body;
 
@@ -15,7 +15,7 @@ export const signup = async (req, res,next) => {
     }
 }
 
-export const login = async (req, res,next) => {
+export const login = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email })
     try {
         if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
