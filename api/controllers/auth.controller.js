@@ -14,3 +14,18 @@ export const signup = async (req, res) => {
         res.status(500).json(error.messsage)
     }
 }
+
+export const login = async (req, res) => {
+    const user = await User.findOne({ email: req.body.email })
+    try {
+        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
+            res.status(401).send("Incorrect email or password");
+        }
+        delete user.password;
+        res.status(200).json({ data: user });
+    } catch (error) {
+        res.status(500).json(error.messsage)
+
+    }
+
+}
