@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -36,7 +36,7 @@ export const SignUp = () => {
       setLoading(false);
       setError(error.message)
     }
-   
+
   }
 
   return (
