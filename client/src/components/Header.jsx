@@ -21,7 +21,7 @@ export const Header = () => {
                     <Link to="/about">
                         <li className="hidden sm:inline text-slate-700 hover:underline" >About</li>
                     </Link>
-                    <Link to="/sign-up">
+                    <Link to="/sign-in">
                         <li className=" text-slate-700 hover:underline">
                             {''}
                             Sign in</li>

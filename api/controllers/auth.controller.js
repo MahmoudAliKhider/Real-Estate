@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import User from "../models/use.model.js"
 import jwt from "jsonwebtoken";
+import { errorHandler } from '../utils/error.js';
 
 export const signup = async (req, res, next) => {
     const password = await bcrypt.hash(req.body.password, 10);
