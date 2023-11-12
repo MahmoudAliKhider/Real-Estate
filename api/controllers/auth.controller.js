@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import User from "../models/use.model.js"
+import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
     const password = await bcrypt.hash(req.body.password, 10);
@@ -19,13 +20,16 @@ export const login = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email })
     try {
         if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-            res.status(401).send("Incorrect email or password");
+            return next(errorHandler(404, "Incorrect email or password"));
         }
-        delete user.password;
-        res.status(200).json({ data: user });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        delete user._doc.password
+        res
+            .cookie("access_token", token, { httpOnly: true })
+            .status(200)
+            .json(user)
+
     } catch (error) {
         next(error)
-
     }
-
 }
