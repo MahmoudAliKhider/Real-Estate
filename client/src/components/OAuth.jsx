@@ -8,6 +8,8 @@ import {signInSuccess} from '../redux/user/userSlice';
 export const OAuth = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    
     const handelGoogleClick = async () => {
         try {
             const provider = new GoogleAuthProvider();
