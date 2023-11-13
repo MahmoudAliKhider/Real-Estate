@@ -42,7 +42,8 @@ export const userDelete = async (req, res, next) => {
         return next(errorHandler(401, 'you can only update own Account'));
     try {
         await User.findByIdAndDelete(req.params.id);
-        res.status(201).json("User Has been Deleted")
+        res.clearCookie('access_token');
+        res.status(201).json("User Has been Deleted");
     } catch (error) {
         next(error)
     }

@@ -6,6 +6,6 @@ import { verifyToken } from '../utils/verifyUser.js';
 const router = express.Router();
 
 router.post("/update/:id", verifyToken, updateUser);
-router.post("/delete/:id", verifyToken, userDelete);
+router.delete("/delete/:id", verifyToken, userDelete);
 
 export default router;
