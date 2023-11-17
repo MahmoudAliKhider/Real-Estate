@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/listen", listenRouter);
+app.use("/api/listing", listenRouter);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
