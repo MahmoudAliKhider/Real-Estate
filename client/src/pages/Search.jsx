@@ -17,7 +17,7 @@ export const Search = () => {
     const [loading, setLoading] = useState(false);
     const [listings, setListings] = useState([]);
     const [showMore, setShowMore] = useState(false);
-    console.log(listings)
+
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
         const searchTermFromUrl = urlParams.get('searchTerm');

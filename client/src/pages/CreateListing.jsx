@@ -213,11 +213,11 @@ export default function CreateListing() {
                     </div>
                     <div className="flex flex-wrap gap-3">
                         <div className="flex items-center gap-2">
-                            <input type="number" id="bedrooms" min='1' max='10' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bedrooms} required />
+                            <input type="number" id="bedrooms" min='1' max='20' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bedrooms} required />
                             <p>Beds</p>
                         </div>
                         <div className="flex items-center gap-2">
-                            <input type="number" id="bathrooms" min='1' max='10' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bathrooms} required />
+                            <input type="number" id="bathrooms" min='1' max='20' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.bathrooms} required />
                             <p>Baths</p>
                         </div>
                         <div className="flex items-center gap-2">
@@ -228,7 +228,7 @@ export default function CreateListing() {
                             </div>
                         </div>
                         <div className="flex items-center gap-2">
-                            <input type="number" id="discountPrice" min='1' max='10' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.discountPrice} required />
+                            <input type="number" id="discountPrice" min='1' max='10000' className="p-3 border border-gray-300 rounded-lg" onChange={handleChange} value={formData.discountPrice} required />
                             <div className="flex flex-col items-center">
                                 <p>Discounted price</p>
                                 <span className="text-xs">($ / month)</span>
